@@ -34,6 +34,8 @@ RUN curl -s https://get.nextflow.io | bash \
 	&& mv nextflow /usr/local/bin \
 	&& nextflow info
 
+export NXF_EDGE=1
+nextflow self-update
 
 # install nextflow-api from build context
 WORKDIR /opt/nextflow-api

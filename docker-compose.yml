@@ -3,6 +3,6 @@ services:
   deploy:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile_no_k8s
     ports:
       - '80:8080'
