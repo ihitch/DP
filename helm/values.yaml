@@ -1,0 +1,51 @@
+# Default values for nextflow-api.
+# Declare variables to be passed into your templates.
+
+# PVC
+NewLocalPV:
+  # If true, create new PVC on local cluster.
+  Enabled: true
+  Name: nextflow-api-pv
+  StorageClass: scratch
+  Size: 10Gi
+
+NewLocalPVC:
+  # If true, create new PVC on local cluster.
+  Enabled: true
+  Name: nextflow-api-pvc
+  StorageClass: scratch
+  Size: 10Gi
+
+
+# Web server deployment settings
+WebServer:
+  # Docker image, change to your nextflow-api image if needed
+  Image: ihajaros/nextflow-api
+  # Database Backend - options are "file" and "mongo"
+  Backend: "mongo"
+  # Number of containers
+  Replicas: 1
+  # Resource requests and limits per container
+  Resources:
+    Requests:
+      CPU: 2
+      Memory: 2Gi
+    Limits:
+      CPU: 2
+      Memory: 2Gi
+
+
+# NodePort Settings
+NodePorts:
+  Enabled: true
+  NodePort: 31376
+
+
+# Ingress control settings
+Ingress:
+  # If true, use Ingress control.
+  # Otherwise, generic LoadBalancer networking will be used,
+  # and the other settings in this section will be ignored.
+  Enabled: false
+  # The subdomain to associate with this service.
+  Host: nextflow-api-dev.net

@@ -1,0 +1,33 @@
+
+{{ if .Values.NewLocalPV.Enabled }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.NewLocalPV.Name }}
+spec:
+  storageClassName: {{ .Values.NewLocalPV.StorageClass }}
+  capacity:
+    storage: {{ .Values.NewLocalPV.Size }}
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: /tmp/nextflow-api
+{{ end }}
+---
+{{ if .Values.NewLocalPVC.Enabled }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ .Values.NewLocalPVC.Name }}
+  labels:
+    app: {{ template "nextflow-api.name" . }}
+    chart: {{ template "nextflow-api.chart" . }}
+    release: {{ .Release.Name }}
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: {{ .Values.NewLocalPVC.Size }}
+  storageClassName: {{ .Values.NewLocalPVC.StorageClass }}
+{{ end }}
