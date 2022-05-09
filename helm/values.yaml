@@ -28,11 +28,11 @@ WebServer:
   # Resource requests and limits per container
   Resources:
     Requests:
-      CPU: 2
-      Memory: 2Gi
+      CPU: 1
+      Memory: 1Gi
     Limits:
-      CPU: 2
-      Memory: 2Gi
+      CPU: 1
+      Memory: 1Gi
 
 
 # NodePort Settings
