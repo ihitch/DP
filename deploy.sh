@@ -23,7 +23,7 @@ minikube start
 minikube addons enable metrics-server
 
 # deploy helm chart to kubernetes cluster 
-helm uninstall nextflow-api || echo 'ignore above error'
+helm uninstall nextflow-api || echo 'No prior installation of app found.'
 helm install nextflow-api ./helm
 
 # create rolebinding 

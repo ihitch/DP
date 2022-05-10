@@ -66,7 +66,7 @@ class WorkflowCreateHandler(tornado.web.RequestHandler):
 		'params_format': '',
 		'params_data': '',
 		'profiles': 'standard',
-		'revision': 'master',
+		'revision': 'main',
 		'input_dir': 'input',
 		'output_dir': 'output',
 		'attempts': 0
