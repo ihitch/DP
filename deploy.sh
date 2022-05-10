@@ -17,16 +17,18 @@ if [[ $# == 1 ]]; then
 	docker push ${IMAGE_NAME}
 fi
 
+# start minikube cluster
 minikube delete --all
 minikube start
-minikube addons enable ingress
 minikube addons enable metrics-server
 
 # deploy helm chart to kubernetes cluster 
-helm uninstall nextflow-api || echo 'first install'
+helm uninstall nextflow-api || echo 'ignore above error'
 helm install nextflow-api ./helm
 
+# create rolebinding 
 kubectl create rolebinding default-edit --clusterrole=edit --serviceaccount=default:default
 kubectl create rolebinding default-view --clusterrole=view --serviceaccount=default:default
 
+# expose service 
 minikube service nextflow-api --url 
