@@ -13,7 +13,7 @@ This repository includes the source code of the master's thesis project.
 ## Installation
 1) `git clone`
 2) `cd DP`
-3) In DP/helm/values.yaml edit image to the name you want or leave it as it is
+3) In `DP/helm/values.yaml` edit image to the name you want or leave it as it is
 	```
 	WebServer:
 		Image:
